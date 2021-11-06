@@ -1,0 +1,60 @@
+package com.company;
+// Implement class Library1.
+// Methods: addBook,showAvailableBook,issueBook,returnBook.
+// Create Array to store book the available books.
+// Create Array to store issued book.
+class Library1
+{
+    String[] books;
+    int no_of_book;
+    // create constructor to Create memory.
+    Library1()
+    {
+        this.books=new String[1000];
+        this.no_of_book=0;
+    }
+    void addBook(String book)
+    {
+        this.books[no_of_book]=book;
+        no_of_book++;
+        System.out.println(book+" Has been added");
+    }
+    void showAvailableBook(){
+        System.out.println("Available Books are:");
+        for(String book:this.books) {
+            if(book==null)
+            continue;
+            System.out.println("* "+book);
+        }
+    }
+    void issueBooks(String book) {
+        for (int i = 0; i < this.books.length; i++) {
+            if (this.books[i].equals(book)) {
+                System.out.println(book+" has been issued:");
+                this.books[i] = null;
+                return;
+            }
+        }
+        System.out.println("The Book does not exist!");
+    }
+    void returnBook(String book)
+    {
+        this.addBook(book);
+    }
+
+}
+public class Library{
+    public static void main(String[] args) {
+  Library1 centralLibrary=new Library1();
+  centralLibrary.addBook("Advance Java");
+  centralLibrary.addBook("Concept Of Algorithm");
+  centralLibrary.addBook("C++");
+  centralLibrary.showAvailableBook();
+
+
+   centralLibrary.issueBooks("C++");
+   centralLibrary.showAvailableBook();
+   centralLibrary.returnBook("C++");
+   centralLibrary.showAvailableBook();
+    }
+}
